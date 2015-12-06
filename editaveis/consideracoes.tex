@@ -1,3 +1,117 @@
-\chapter[Considerações]{Considerações}
+\chapter[Considerações parciais]{Considerações parciais}
 
-\section{•}
+Ao final da revisão bibliográfica, pode ser verificado que nos últimos anos houve avanços significativos na linha de pesquisa de hipervídeos. Apesar de recente, é considerada uma área com grande potencial, sendo explorada em áreas como marketing, entretenimento e educação. Entretanto, produzir conteúdo para esse tipo de mídia está longe de ser trivial, limitando o público em geral ao uso de ferramentas que não seguem padrões, cujo o conteúdo é restrito à ferramenta usada na criação do material para que este possa ser visualizado. Este fator apenas torna a aderência desta tecnologia mais lenta. Deixando mais vulnerável áreas que muitas vezes possuem poucos recursos disponíveis para superar essas dificuldades, como a de educação.
+
+Com a implementação da prova de conceito, também pode ser verificado que o componente proposto tem o potencial de reduzir as dificuldades de utilizar hipervídeos pois busca empregar uma arquitetura que além facilitar a expansibilidade das características de hipermídia, também está fundamentada em tecnologias amplamente difundidas. Outro fator que contribui nesse potencial é a aderência à um padrão simplificado de anotações facilmente escalável, permitindo que anotações geradas em sistemas que compartilhem o uso do padrão de anotações baseado em objetos \textit{JSON} sejam compreendidas pelo módulo de reprodução.
+
+\section{Planejamento do desenvolvimento}
+
+Na tabela \ref{tab:tempo} a seguir é apresentado o \textit{backlog} do sistema em formato de histórias, que consiste em requisitos atômicos, implementáveis e testáveis. É comum que o \textit{backlog} do produto sofra alterações durante o desenvolvimento. O \textit{time-box} definido para as \textit{sprints} é de 2 semanas. Para cada história planejada foram atribuidos uma identificação e uma pontuação.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{| c | p{9cm} | c |}
+		\hline
+		História & Descrição & Pontuação \\
+		\hline
+		\hline
+		H0 & Eu como desenvolvedor desejo um mecanismo para popular a base de dados com anotações em formato JSON. & 5 \\
+		\hline
+		H1 & Eu como desenvolvedor desejo um mecanismo para recuperar dados de anotações da base de dados em formato JSON. & 5 \\
+		\hline
+		H2 & Eu como desenvolvedor desejo um mecanismo que suporte a inclução de novos componentes de anotações. & 4 \\
+		\hline
+		H3 & Eu como desenvolvedor desejo um mecanismo para reprodução de hipervídeos. & 9 \\
+		\hline		
+		H4 & Eu como desenvolvedor desejo uma interface visual para inserir dados das anotaçãos e mídias de vídeo. & 4 \\
+		\hline
+		H5 & Eu como desenvolvedor desejo um componente de anotação para criar vinculos temporais de apresentação para subvídeos. & 2 \\
+		\hline
+		H6 & Eu como desenvolvedor desejo um componente de anotação para criar vinculos temporais de apresentação de questões. & 2 \\
+		\hline		
+		H7 & Eu como desenvolvedor desejo um componente de anotação para criar vinculos temporais de apresentação de links. & 2 \\
+		\hline
+		H8 & Eu como desenvolvedor desejo um componente de anotação para criar vinculos temporais de apresentação de textos sobreposto ao vídeo. & 3 \\
+		\hline
+		H9 & Eu como desenvolvedor desejo um componente de anotação para criar vinculos temporais de apresentação de sumário. & 3 \\
+		\hline
+		H10 & Eu como desenvolvedor desejo um componente de anotação para criar vinculos temporais de apresentação de legendas. & 3 \\
+		\hline		
+		H11 & Eu como desenvolvedor desejo um componente de controle temporal de hipervídeos. & 5 \\
+		\hline
+		H12 & Eu como desenvolvedor desejo uma interface separada para construção do hipervídeo. & 5 \\
+		\hline
+		H13 & Eu como desenvolvedor desejo um mecanismo que exporte as anotações criadas para fim de \textit{backup.} & 5 \\
+		\hline
+		\hline		
+		- & Total & 54 \\
+		\hline		
+	\end{tabular}
+	\caption{Tempo para implementação de funcionalidades.}
+	\label{tab:tempo}
+\end{table}
+
+Para elaboração do cronograma, foi realizada a priorização das histórias planejadas. A tabela \ref{tab:plan} a seguir mostra a distribuição das histórias nas \textit{sprints} e quantos pontos foram concluídos.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{| c | p{4cm} | c | c |}
+		\hline
+		\textit{Sprint} & Histórias & Pontos planejados & Pontos executados \\
+		\hline
+		\hline
+		S1 & H0,H1  & 10 & 10 \\
+		\hline
+		S2 & H3,H11 & 14 & 14 \\
+		\hline		
+		S3 & H4,H5,H6 & 8 & 8 \\
+		\hline
+		S4 & H2,H7,H8 & 9 & 0 \\
+		\hline
+		S5 & H9,H12 & 8 & 0 \\
+		\hline
+		S6 & H13 & 5 & 0 \\
+		\hline
+		- & Total & 54 & 32 \\
+		\hline
+	\end{tabular}
+	\caption{Planejamento das \textit{Sprints}.}
+	\label{tab:plan}
+\end{table}
+
+Percebe-se que aproximadamente 59\% do \textit{backlog} proposto foi consumido, necessitando da definição de novas histórias no \textit{backlog} para a continuidade deste trabalho no TCC 2. Estas histórias viram de refatorações necessárias e melhorias das funcionalidades do componente. Outro dado importante proveniente deste planejamento é o \textit{velocity}, que consiste na quantidade de pontos produzidos por \textit{sprint}, igual a aproximadamente 10 pontos.
+
+A continuidade do trabalho no TCC 2 consiste no cumprimento de xx etapas:
+
+\begin{itemize}
+	\item Etapa 1 - Integração com a plataforma Hypervídeos.
+	\item Etapa 2 - Finalização do módulo de criação de anotações expansível.
+	\item Etapa 3 - Finalização do módulo de reprodução de hipervídeos.
+	\item Etapa 4 - Documentação e revisão do trabalho realizado (TCC 2).
+\end{itemize}
+
+A integração consiste em criar as interfaces necessárias para que o componente seja acoplado no Hypervídeos e em outros sistemas semelhantes que implementem as interfaces definidas; Integrar o sistema para que seja desenvolvido na plataforma que foi escolhida como objeto de estudo; Adequar o ambiente de desenvolvimento aos requisitos da plataforma, de modo a manter os padrões de desenvolvimento do projeto Hypervídeos.
+
+Na segunda etapa deve ser implementado as histórias relacionadas ao módulo de criação de anotações. Na terceira etapa deve ser implementado as histórias relativas ao módulo de reprodução de hipervídeos. Por último, na quarta etapa deve ser realizado a documentação e revisão do trabalho em formato de TCC.
+
+Estas etapas devem seguir o cronograma apresentado na tabela \ref{tab:plantcc2} a seguir.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{| c | p{4cm} | c | c | c |}
+		\hline
+		Etapas & Mês 1 & Mês 2 & Mês 3 & Mês 3 \\
+		\hline
+		\hline
+		1 & x & & & \\
+		\hline
+		2 & & x & & \\
+		\hline		
+		3 & & & x & \\
+		\hline
+		4 & & & & x \\
+		\hline
+	\end{tabular}
+	\caption{Planejamento do cronograma do TCC 2.}
+	\label{tab:plantcc2}
+\end{table}

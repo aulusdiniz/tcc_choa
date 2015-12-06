@@ -6,9 +6,9 @@ Este capítulo aborda questões relativas ao desenvolvimento do sistema. Para me
 
 Conforme as teorias apresentadas, os sistemas de vídeos interativos são sistemas que permitem certo grau de interação com o conteúdo audiovisual. De modo a atingir o objetivo de desenvolver um componente de hipervídeo proposto neste trabalho, foi definida uma plataforma para integração que permitisse um estudo sobre em quais termos este componente deveria ser construido.
 
-A plataforma definida como objeto de estudo deste trabalho foi a \textit{Hypervídeos} \cite{arthurtcc}. Esta escolha foi feita levando em consideração que o projeto encontra-se ativo no Github\footnote{Ferramenta de centralização de código e controle de versão. Pode ser acessado pela URL www.github.com na data de publicação deste trabalho.}, além disso o projeto possui um ambiente de integração contínua com testes automatizados e controle de \textit{build\footnote{Versão do software pronta para distribuição.}}, licença GPL\footnote{GPL significa General Public License, uma licença que permite que o código seja utilizado e compartilhado, também garante que qualquer produto derivado seja distribuído sob a mesma licença.}, foi construido com base em tecnologias para Web (\textit{Meteor e Polymer}) e teve o desenvolvimento acompanhado de forma parcial pelo autor deste trabalho.
+A plataforma definida como objeto de estudo deste trabalho foi a \textit{Hypervídeos} \cite{arthurtcc}. Esta escolha foi feita levando em consideração que o projeto encontra-se ativo no Github\footnote{Ferramenta de centralização de código e controle de versão. Pode ser acessado pela URL www.github.com na data de publicação deste trabalho.}, além disso o projeto possui um ambiente de integração contínua com testes automatizados e controle de \textit{build \footnote{Versão do software pronta para distribuição.}}, licença GPL v3\footnote{GPL significa General Public License, uma licença que permite que o código seja utilizado e compartilhado, também garante que qualquer produto derivado seja distribuído sob a mesma licença.}, foi construido com base em tecnologias para \textit{Web} (\textit{Meteor e Polymer}) e teve o desenvolvimento acompanhado de forma parcial pelo autor deste trabalho.
 
-O \textit{framework} procura facilitar o desenvolvimento mobile e web, trazendo vantagens no que diz respeito a responsividade e construção de software multiplataforma, agrega recursos de reatividade, utilizando unicamente \textit{Javascript} como linguagem de programação. Já o \textit{Polymer} consiste em uma biblioteca que permite a criação de componentes web para fins específicos, facilitando o reuso e permitindo a componentização de interfaces web.
+O \textit{framework} procura facilitar o desenvolvimento \textit{mobile} e \textit{web}, trazendo vantagens no que diz respeito a responsividade e construção de \textit{software} multiplataforma, agrega recursos de reatividade, utilizando unicamente \textit{Javascript} como linguagem de programação. Já o \textit{Polymer} consiste em uma biblioteca que permite a criação de componentes \textit{web} para fins específicos, facilitando o reuso e permitindo a componentização de interfaces \textit{web}.
 
 Além dos motivos citados anteriormente, outro motivo para adoção desta plataforma como objeto de estudo foi a identificação das seguintes fraquezas: o componente de reprodução de vídeo não suporta conteúdo hipermidiático, o que pode ser visto na figura \ref{fig:hyp_reprod}; também a tela de construção de subvídeos, que possibilita a criação da interatividade do conteúdo, não favorece o autor do curso no sentido de apresentar apenas a estrutura de decisão ao final de cada vídeo, mostrado na figura \ref{fig:hyp_constr}.
 
@@ -34,15 +34,15 @@ O módulo de criação de anotações tem como principais objetivos facilitar a 
 
 O Componente de hípervideo segue o padrão arquitetural MVC, logo a visão do módulo de criação possui responsabilidades relacionadas apenas à eventos e aspectos visuais. Visualmente o componente de criação de anotações é semelhante ao componente de reprodução, mas com algumas diferenças sutis. O componente possui um reprodutor de vídeo com controles assim como o componente de visualização de hipervídeos, o intuito é permitir que o professor autor, criar as anotações e conferir o quanto antes o resultado gerado realizada, além de facilitar a identificação de qual momento deve ser adicionada a anotação.
 
-Diferentemente do componente de visualização de hipervídeos, o módulo de criação de anotações se comporta exibindo um menu de opções de tipos de anotações acima da linha do tempo do vídeo quando detecta um clique no controle de trilha de tempo. Ao selecionar o tipo de anotação que se deseja adicionar, é necessário inserir as informações da anotação, sendo estas diferentes para cada tipo diferentes de anotação.
+Diferentemente do componente de visualização de hipervídeos, o módulo de criação de anotações se comporta exibindo um \textit{menu} de opções de tipos de anotações acima da linha do tempo do vídeo quando detecta um clique no controle de trilha de tempo. Ao selecionar o tipo de anotação que se deseja adicionar, é necessário inserir as informações da anotação, sendo estas diferentes para cada tipo diferentes de anotação.
 
 Ao criar uma anotação que referencia um subvídeo deve ser informado qual a mídia audiovisual que será utilizada, em qual tempo deve iniciar a reprodução e qual a duração da anotação. Já para adicionar anotações do tipo questões deve ser informado o enunciado da questão, as alternativas e em qual tempo as questões devem ser exibidas. Neste momento é perceptível que o atributo de tempo inicial é intrínseco a todas as anotações.
 
-De modo a não quebrar a arquitetura MVC, as informações inseridas são encaminhadas para a camada de controle através de disparo de eventos e da mesma forma repassadas para o modelo para que os dados possam então serem validados e gravados na base de dados em formato JSON. Nesse momento é importante ressaltar que as anotações se tornarão uma camada adicional sobreposta aos vídeos quando utilizados pelo módulo de visualização.
+De modo a não quebrar a arquitetura MVC, as informações inseridas são encaminhadas para a camada de controle através de disparo de eventos e da mesma forma repassadas para o modelo para que os dados possam então serem validados e gravados na base de dados em formato \textit{JSON}. Nesse momento é importante ressaltar que as anotações se tornarão uma camada adicional sobreposta aos vídeos quando utilizados pelo módulo de visualização.
 
 Como as informações relevantes da anotação são exibidas em tela, é possível analisar se os dados inseridos estão corretos, e também possibilita que outras anotações já existentes possam ser acessadas para que sejam reaproveitadas, evitando que haja um trabalho repetido desnecessariamente.
 
-A visão do componente está baseada na biblioteca Polymer, o que permite muita flexibilidade com relação a reutilização do componente em outros sistemas e também com relação a criação de novos tipos de anotações, requerendo um conhecimento técnico consideravelmente menor e buscando a aderência à padrões web. As ações dos componentes são implementadas utilizando a linguagem Javascript, a mesma linguagem utilizada pelo Meteor que é a base da plataforma Hypervídeos.
+A visão do componente está baseada na biblioteca \textit{Polymer}, o que permite muita flexibilidade com relação a reutilização do componente em outros sistemas e também com relação a criação de novos tipos de anotações, requerendo um conhecimento técnico consideravelmente menor e buscando a aderência à padrões \textit{web}. As ações dos componentes são implementadas utilizando a linguagem \textit{Javascript}, a mesma linguagem utilizada pelo \textit{Meteor} que é a base da plataforma Hypervídeos.
 
 Ao utilizar o modo de reprodução o motor do módulo de reprodução é acionado, porém o funcionamento será abordado na seção seguinte.
 
@@ -50,13 +50,13 @@ Ao utilizar o modo de reprodução o motor do módulo de reprodução é acionad
 
 Como foi mencionado, o módulo de visualização de hipervídeos funciona de modo ligeiramente diferente, seguiremos a mesma abordagem da seção anterior para entender o funcionamento.
 
-Ao iniciar uma reprodução de hipervídeo, o módulo de visualização dispara um evento capturado pelo controle para requisitar que o modelo de dados recupere as informações das anotações gravadas na base de dados que contém o identificador do hipervídeo. Após conseguir estas informações o modelo de dados dispara um evento para encaminha-las para o controle que então inicia a reprodução do hipervídeo. No instante em que uma anotação deve ser apresentada o controle usa os atributos da anotação para buscar as mídias necessárias, em seguida empacota essas informações e envia para a visão novamente através de um disparo de evento notificando que o componente Polymer referente ao tipo de anotação que deve ser exibido com os dados relevantes da anotação.
+Ao iniciar uma reprodução de hipervídeo, o módulo de visualização dispara um evento capturado pelo controle para requisitar que o modelo de dados recupere as informações das anotações gravadas na base de dados que contém o identificador do hipervídeo. Após conseguir estas informações o modelo de dados dispara um evento para encaminha-las para o controle que então inicia a reprodução do hipervídeo. No instante em que uma anotação deve ser apresentada o controle usa os atributos da anotação para buscar as mídias necessárias, em seguida empacota essas informações e envia para a visão novamente através de um disparo de evento notificando que o componente \textit{Polymer} referente ao tipo de anotação que deve ser exibido com os dados relevantes da anotação.
 
 Quando exibida a visão da anotação, fica a cargo da visão lidar com a interação entre o usuário e o componente. É importante lembrar que a anotação não necessita de uma visão de forma compulsória, um exemplo disso é quando a anotação referencia um outro vídeo que deve substituir a mídia atual. No caso do componente de questões é possível que a anotação requeira que o vídeo em reprodução seja pausado e a tela escurecida, como um exemplo da aplicação das heurísticas de aprendizagem multimídia.
 
 \section{Integração com a plataforma Hypervídeos}
 
-A integração com a plataforma acontece... \ref{fig:arquitetura_final} \ref{fig:arquitetura_probe}
+A integração com a plataforma deve acontecer de modo a não ferir os princípios do MVC. Para realizar tal tarefa foi proposto o modelo de aquitetura que pode ser visto na figura \ref{fig:arquitetura_final}. Pode-se perceber que os elementos da arquitetura do componente se conectam com a plataforma em cada camada. 
 
 \begin{figure}[h!]
 	\centering
@@ -64,7 +64,9 @@ A integração com a plataforma acontece... \ref{fig:arquitetura_final} \ref{fig
   	\caption{Arquitetura planejada para integração com Hypervídeos.}
 	\small{Fonte: Própria.}
   	\label{fig:arquitetura_final}
-\end{figure} 
+\end{figure}
+
+Porém para elaboração deste trabalho foi proposto uma prova de conceito para que se verificasse a possibilidade real de construção do componente. Esta prova de conceito segue uma arquitetura similar, porém mais simples que a que se pretende construir no produto final, esta arquitetura pode ser analisada na figura \ref{fig:arquitetura_probe}. 
 
 \begin{figure}[h!]
 	\centering
@@ -72,4 +74,6 @@ A integração com a plataforma acontece... \ref{fig:arquitetura_final} \ref{fig
   	\caption{Arquitetura da prova de conceito realizada.}
 	\small{Fonte: Própria.}
   	\label{fig:arquitetura_probe}
-\end{figure} 
+\end{figure}
+
+Esta arquitetura se mostrou eficaz aos objetivos propostos, permitindo a integração com a plataforma, criação de anotações, e visualização do vídeo em conjunto com conteúdo anotado de forma sobreposta. Esta arquitetura não beneficia a expansão dos componentes de anotação, porém é suficiente para inferir que é possível adicionar esta característica por meio de refatorações no código. 
