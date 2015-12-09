@@ -6,9 +6,19 @@ Este capítulo aborda questões relativas ao desenvolvimento do sistema. Para me
 
 Conforme as teorias apresentadas, os sistemas de vídeos interativos são sistemas que permitem certo grau de interação com o conteúdo audiovisual. De modo a atingir o objetivo de desenvolver um componente de hipervídeo proposto neste trabalho, foi definida uma plataforma para integração que permitisse um estudo sobre em quais termos este componente deveria ser construido.
 
-A plataforma definida como objeto de estudo deste trabalho foi a \textit{Hypervídeos} \cite{arthurtcc}. Esta escolha foi feita levando em consideração que o projeto encontra-se ativo no Github\footnote{Ferramenta de centralização de código e controle de versão. Pode ser acessado pela URL www.github.com na data de publicação deste trabalho.}, além disso o projeto possui um ambiente de integração contínua com testes automatizados e controle de \textit{build \footnote{Versão do software pronta para distribuição.}}, licença GPL v3\footnote{GPL significa General Public License, uma licença que permite que o código seja utilizado e compartilhado, também garante que qualquer produto derivado seja distribuído sob a mesma licença.}, foi construido com base em tecnologias para \textit{Web} (\textit{Meteor e Polymer}) e teve o desenvolvimento acompanhado de forma parcial pelo autor deste trabalho.
+A plataforma definida como objeto de estudo deste trabalho foi a \textit{Hypervídeos} \cite{arthurtcc}. Esta escolha foi feita levando em consideração que o projeto encontra-se ativo no Github \footnote{Ferramenta de centralização de código e controle de versão. Pode ser acessado pela URL www.github.com na data de publicação deste trabalho.}, além disso o projeto possui um ambiente de integração contínua com testes automatizados e controle de \textit{build \footnote{Versão do software pronta para distribuição.}}, licença GPL v3 \footnote{GPL significa General Public License, uma licença que permite que o código seja utilizado e compartilhado, também garante que qualquer produto derivado seja distribuído sob a mesma licença.}, foi construido com base em tecnologias para \textit{Web} (\textit{Meteor e Polymer}) e teve o desenvolvimento acompanhado de forma parcial pelo autor deste trabalho.
 
-O \textit{framework} procura facilitar o desenvolvimento \textit{mobile} e \textit{web}, trazendo vantagens no que diz respeito a responsividade e construção de \textit{software} multiplataforma, agrega recursos de reatividade, utilizando unicamente \textit{Javascript} como linguagem de programação. Já o \textit{Polymer} consiste em uma biblioteca que permite a criação de componentes \textit{web} para fins específicos, facilitando o reuso e permitindo a componentização de interfaces \textit{web}.
+O \textit{framework} procura facilitar o desenvolvimento \textit{mobile} e \textit{web}, trazendo vantagens no que diz respeito a responsividade e construção de \textit{software} multiplataforma, agrega recursos de reatividade, utilizando unicamente \textit{Javascript} como linguagem de programação. Esse \textit{framework} possui uma estrutura simplificada como pode ser observado na figura \ref{fig:meteor-arq} a seguir. O bloco DDP representa \textit{Distributed Data Protocol}, DPP é a maneira que \textit{Meteor} provê para a aplicação do lado cliente troque informações com a aplicação no servidor, é esse protocolo que possibilita a reatividade \cite{meteor2015}.
+
+ Já o \textit{Polymer} consiste em uma biblioteca que permite a criação de componentes \textit{web} para fins específicos, facilitando o reuso e permitindo a componentização de interfaces \textit{web}. Na figura \ref{fig:meteor-arq} o \textit{Polymer} estaria junto com o \textit{Blaze}, \textit{Angular} e \textit{React}.
+
+\begin{figure}[h!]
+	\centering
+  	\includegraphics[width=.9\linewidth]{figuras/meteor-arq.eps}
+  	\caption{Representação da arquitetura cliente-servidor do \textit{Meteor}.}
+	\small{Fonte: \cite{meteor2015}}
+  	\label{fig:meteor-arq}
+\end{figure} 
 
 Além dos motivos citados anteriormente, outro motivo para adoção desta plataforma como objeto de estudo foi a identificação das seguintes fraquezas: o componente de reprodução de vídeo não suporta conteúdo hipermidiático, o que pode ser visto na figura \ref{fig:hyp_reprod}; também a tela de construção de subvídeos, que possibilita a criação da interatividade do conteúdo, não favorece o autor do curso no sentido de apresentar apenas a estrutura de decisão ao final de cada vídeo, mostrado na figura \ref{fig:hyp_constr}.
 
@@ -22,7 +32,7 @@ Além dos motivos citados anteriormente, outro motivo para adoção desta plataf
 
 \begin{figure}[h!]
 	\centering
-  	\includegraphics[width=.9\linewidth]{figuras/construcao_hyp.eps}
+  	\includegraphics[width=.7\linewidth]{figuras/construcao_hyp.eps}
   	\caption{Tela de construção de material do hypervídeos.}
 	\small{Fonte: \cite{arthurtcc}}
   	\label{fig:hyp_constr}
@@ -34,7 +44,34 @@ O módulo de criação de anotações tem como principais objetivos facilitar a 
 
 O Componente de hípervideo segue o padrão arquitetural MVC, logo a visão do módulo de criação possui responsabilidades relacionadas apenas à eventos e aspectos visuais. Visualmente o componente de criação de anotações é semelhante ao componente de reprodução, mas com algumas diferenças sutis. O componente possui um reprodutor de vídeo com controles assim como o componente de visualização de hipervídeos, o intuito é permitir que o professor autor, criar as anotações e conferir o quanto antes o resultado gerado realizada, além de facilitar a identificação de qual momento deve ser adicionada a anotação.
 
-Diferentemente do componente de visualização de hipervídeos, o módulo de criação de anotações se comporta exibindo um \textit{menu} de opções de tipos de anotações acima da linha do tempo do vídeo quando detecta um clique no controle de trilha de tempo. Ao selecionar o tipo de anotação que se deseja adicionar, é necessário inserir as informações da anotação, sendo estas diferentes para cada tipo diferentes de anotação.
+Diferentemente do componente de visualização de hipervídeos, o módulo de criação de anotações se comporta exibindo um \textit{menu} de opções de tipos de anotações na parte superior do componente ao detecta um clique de seleção, observe na figura \ref{fig:hp_closed_tab}. Na atual configuração do sistema, a anotação pode ser um subvídeo ou questões. Ao selecionar o tipo de anotação que se deseja adicionar, é necessário inserir as mídias e em seguida as informações da anotação, sendo estas diferentes para cada tipo diferentes de anotação. Na figura \ref{fig:hp_open_tab} é apresentada a tela em que o usuário pode carregar vídeos para criar anotações, já na figura \ref{fig:hp_editing} é apresentada a tela onde o usuário deve inserir os dados da anotação.
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.45\textwidth}
+	  	\centering
+  		\includegraphics[width=.9\linewidth]{figuras/composer_tab_closed.eps}
+  		\caption{Componente vazio.}
+		\small{Fonte: Próprio}
+	  	\label{fig:hp_closed_tab}
+  	\end{subfigure}%
+	\begin{subfigure}{.45\textwidth}
+	  	\centering
+  		\includegraphics[width=.9\linewidth]{figuras/composer_tab_opened.eps}
+  		\caption{Aba para adição de vídeos.}
+		\small{Fonte: Próprio}
+	  	\label{fig:hp_open_tab}
+  	\end{subfigure}%
+	\caption{Componente de construção de hipervídeo.}
+\end{figure} 
+
+\begin{figure}[h!]
+	\centering
+  	\includegraphics[width=.9\linewidth]{figuras/composer_video_added.eps}
+  	\caption{Componente mostrando a tela de edição ativa de anotações.}
+	\small{Fonte: Próprio}
+  	\label{fig:hp_editing}
+\end{figure} 
 
 Ao criar uma anotação que referencia um subvídeo deve ser informado qual a mídia audiovisual que será utilizada, em qual tempo deve iniciar a reprodução e qual a duração da anotação. Já para adicionar anotações do tipo questões deve ser informado o enunciado da questão, as alternativas e em qual tempo as questões devem ser exibidas. Neste momento é perceptível que o atributo de tempo inicial é intrínseco a todas as anotações.
 
